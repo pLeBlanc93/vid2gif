@@ -10,8 +10,9 @@ If NOT EXIST %ffmpeg% (
     ECHO.
     ECHO ffmpeg cannot be found, downloading...
     ECHO.
-    curl http://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.2.4-win64-static.zip -o %zip_file%
+    powershell -Command "(New-Object Net.WebClient).DownloadFile('http://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.2.4-win64-static.zip', '%zip_file%')"
     unzip %zip_file% *ffmpeg.exe -d "%~dp0."
+    del %zip_file%
 )
 
 REM need to set this so variables can be set inside if statement
