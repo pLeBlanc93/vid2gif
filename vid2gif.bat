@@ -4,13 +4,13 @@ REM an output palette image is created in memory and passed to a separate ffmpeg
 REM see http://blog.pkh.me/p/21-high-quality-gif-with-ffmpeg.html
 
 REM check if ffmpeg is present, download from zernoe if not.
-SET ffmpeg="%~dp0\ffmpeg-3.2.4-win64-static\bin\ffmpeg.exe"
+SET ffmpeg="%~dp0\ffmpeg-4.0-win64-static\bin\ffmpeg.exe"
 SET zip_file="%appdata%\ffmpeg.zip"
 If NOT EXIST %ffmpeg% (
     ECHO.
     ECHO ffmpeg cannot be found, downloading...
     ECHO.
-    powershell -Command "(New-Object Net.WebClient).DownloadFile('http://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-3.2.4-win64-static.zip', '%zip_file%')"
+    powershell -Command "(New-Object Net.WebClient).DownloadFile('http://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-4.0-win64-static.zip', '%zip_file%')"
     unzip %zip_file% *ffmpeg.exe -d "%~dp0."
     del %zip_file%
 )
