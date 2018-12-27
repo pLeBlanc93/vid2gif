@@ -11,7 +11,7 @@ If NOT EXIST %ffmpeg% (
     ECHO ffmpeg cannot be found, downloading...
     ECHO.
     powershell -Command "(New-Object Net.WebClient).DownloadFile('http://ffmpeg.zeranoe.com/builds/win64/static/ffmpeg-4.0-win64-static.zip', '%zip_file%')"
-    unzip %zip_file% *ffmpeg.exe -d "%~dp0."
+    powershell -Command "Add-Type -AssemblyName System.IO.Compression.FileSystem;[System.IO.Compression.ZipFile]::ExtractToDirectory('%zip_file%', './')"
     del %zip_file%
 )
 
